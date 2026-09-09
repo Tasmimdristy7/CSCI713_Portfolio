@@ -41,3 +41,15 @@ const entranceObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 document.querySelectorAll('.section-top, .education-card, .job, .project-card, .contact').forEach(item => entranceObserver.observe(item));
 document.querySelector('.robot-arm').addEventListener('animationend', () => document.querySelector('.robot').classList.remove('waving'));
+
+const nameStage = document.querySelector('.name-stage');
+const rebuildName = document.querySelector('.rebuild-name');
+function assembleName() {
+  nameStage.classList.remove('assembling');
+  if (paused || reducedMotion.matches) return;
+  // Restart the CSS timeline on replay, including each letter's stagger.
+  void nameStage.offsetWidth;
+  nameStage.classList.add('assembling');
+}
+rebuildName.addEventListener('click', assembleName);
+assembleName();
