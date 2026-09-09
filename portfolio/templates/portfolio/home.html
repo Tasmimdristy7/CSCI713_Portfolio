@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,9 +7,9 @@
   <meta name="description" content="Tasmim Rashid — software engineer in test, graduate student, and curious builder. Explore my education, experience, and projects.">
   <meta name="theme-color" content="#101010">
   <title>Tasmim Rashid | Portfolio</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=robot-push-3">
-  <script src="script.js?v=robot-push-3" defer></script>
+  <link rel="icon" href="{% static "portfolio/favicon.svg" %}" type="image/svg+xml">
+  <link rel="stylesheet" href="{% static "portfolio/styles.css" %}?v=robot-push-3">
+  <script src="{% static "portfolio/script.js" %}?v=robot-push-3" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>

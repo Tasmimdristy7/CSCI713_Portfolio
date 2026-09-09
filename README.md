@@ -1,27 +1,42 @@
-# Tasmim Rashid — Portfolio
+# CSCI713_Portfolio
 
-A black-and-white, space-inspired pixel portfolio built with HTML, CSS, and JavaScript. Original SVG artwork, animated robot, twinkling stars, and a small interactive code terminal. No dependencies or build step.
+Tasmim Rashid's portfolio, implemented with Python and Django. Preserves the original monochrome pixel design, Home, Education & Experience, Projects, and two robots pushing the first and last names into place.
 
-## Run locally
+## Run
+
+Requires Python 3.10 or newer (Django 5.2).
 
 ```sh
-python3 -m http.server 8000
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python manage.py runserver 127.0.0.1:8001
 ```
 
-Open http://localhost:8000. GitHub Pages serves the same files directly.
+Open http://127.0.0.1:8001/. No database setup is needed for this read-only portfolio.
 
-## Assignment 1 — Task 1
+## Validate
 
-Home, Education & Experience, and Projects are implemented in separate Git commits. Content is based on my résumé; project links point to my existing public repositories. AI coding tool: OpenAI Codex.
+```sh
+python manage.py check
+python manage.py test
+python manage.py collectstatic --noinput
+```
 
-Repository name is `csci713_portfolio-site` at the owner's request. This is a separate course portfolio; the existing GitHub Pages portfolio remains at tasmimrashid.com. The assignment says to enhance an existing portfolio or name a new personal-site repository `username.github.io`, so confirm that this separate course repository is acceptable to the instructor.
+## Structure
 
-Planned site URL: https://tasmimdristy7.github.io/csci713_portfolio-site/
+- `config/`: Python settings, URL routing, and WSGI application.
+- `portfolio/views.py`: Python view rendering the home page.
+- `portfolio/templates/portfolio/home.html`: Django template.
+- `portfolio/static/portfolio/`: original CSS, JavaScript animations, and favicon.
+- `portfolio/tests.py`: route, template, and static asset checks.
 
-Repository: https://github.com/Tasmimdristy7/csci713_portfolio-site
+The server is Python/Django; the browser still uses HTML, CSS, and JavaScript for the design and animation. Content is based on the owner's résumé. Built with OpenAI Codex. The original section-by-section Git history is preserved.
 
-The toy project and its GitHub Project board are subsequent assignment tasks, not yet implemented here.
+## Hosting
 
-## Accessibility
+Repository: https://github.com/Tasmimdristy7/CSCI713_Portfolio
 
-Responsive layout, keyboard-visible focus, skip navigation, and an animation toggle. Reduced-motion preferences are respected. No audio or tracking.
+This Django application needs a Python-capable host; GitHub Pages cannot execute its Python server. The original static portfolio remains a separate site. For production, set `DJANGO_DEBUG=false`, a private `DJANGO_SECRET_KEY`, and comma-separated `DJANGO_ALLOWED_HOSTS`; use a production WSGI server and serve collected static files through the host. Do not use Django's development server for production.
+
+This repository conversion does not implement the assignment's separate toy project or Kanban board.
