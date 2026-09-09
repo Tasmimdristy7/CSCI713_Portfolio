@@ -31,9 +31,9 @@ html.paused .arriving{animation:none}
 .name-word{display:block;white-space:nowrap}
 .letter-slot{display:inline-block;position:relative}
 .name-letter{display:inline-block}
-.letter-builder{position:absolute;width:24px;height:28px;left:50%;top:calc(100% - 8px);opacity:0;pointer-events:none}
-.assembling .name-letter{animation:place-letter 1.5s cubic-bezier(.22,.7,.25,1) both;animation-delay:var(--delay)}
-.assembling .letter-builder{animation:builder-delivery 1.5s ease-in-out both;animation-delay:var(--delay)}
+.letter-builder{position:absolute;width:32px;height:38px;left:50%;top:calc(100% - 8px);opacity:0;pointer-events:none}
+.assembling .name-letter{animation:place-letter 2.4s cubic-bezier(.22,.7,.25,1) both;animation-delay:var(--delay)}
+.assembling .letter-builder{animation:builder-delivery 2.4s ease-in-out both;animation-delay:var(--delay)}
 .rebuild-name{display:block;margin-top:32px;border:0;border-bottom:1px dashed #666;background:transparent;padding:4px 0;color:#aaa;font:10px var(--mono)}
 .rebuild-name:hover{color:white}
 .name-tagline{font-size:14px;color:#ddd;margin:20px 0 0}

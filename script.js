@@ -52,4 +52,10 @@ function assembleName() {
   nameStage.classList.add('assembling');
 }
 rebuildName.addEventListener('click', assembleName);
-assembleName();
+// Start after the page and fonts are ready, rather than during initial parsing.
+async function startNameIntro() {
+  await document.fonts.ready;
+  window.setTimeout(assembleName, 650);
+}
+if (document.readyState === 'complete') startNameIntro();
+else window.addEventListener('load', startNameIntro, { once: true });
