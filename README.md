@@ -1,5 +1,7 @@
 # CSCI713_Portfolio
 
+**Stack: Python · Django · HTML · CSS · JavaScript**
+
 Tasmim Rashid's portfolio, implemented with Python and Django. Preserves the original monochrome pixel design, Home, Education & Experience, Projects, and two robots pushing the first and last names into place.
 
 ## Run

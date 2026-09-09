@@ -20,3 +20,11 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "America/Chicago"
 USE_TZ = True
+
+# Reload template edits during local development, even without a process restart.
+if DEBUG:
+    TEMPLATES[0]["APP_DIRS"] = False
+    TEMPLATES[0]["OPTIONS"]["loaders"] = [
+        "django.template.loaders.filesystem.Loader",
+        "django.template.loaders.app_directories.Loader",
+    ]
