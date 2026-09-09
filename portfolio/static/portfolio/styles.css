@@ -48,3 +48,9 @@ html.paused .arriving{animation:none}
 html.paused .name-word{animation:none;transform:none}
 @media(prefers-reduced-motion:reduce){.rebuild-name{display:none}}
 @media(max-width:700px){.assembled-name{font-size:clamp(30px,8.5vw,46px)}}
+
+/* The spaceman floats the last name into place with a low-gravity glide. */
+.assembling .last-name{animation-name:space-delivery}
+.assembling .astronaut-body{animation:astronaut-float 1.4s ease-in-out 4}
+@keyframes space-delivery{0%,8%{transform:translate(140%,14px)}45%{transform:translate(65%,-9px)}80%{transform:translate(-5px,3px)}100%{transform:translate(0,0)}}
+@keyframes astronaut-float{50%{transform:translateY(-3px)}}
