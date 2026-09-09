@@ -39,6 +39,19 @@ The server is Python/Django; the browser still uses HTML, CSS, and JavaScript fo
 
 Repository: https://github.com/Tasmimdristy7/CSCI713_Portfolio
 
-This Django application needs a Python-capable host; GitHub Pages cannot execute its Python server. The original static portfolio remains a separate site. For production, set `DJANGO_DEBUG=false`, a private `DJANGO_SECRET_KEY`, and comma-separated `DJANGO_ALLOWED_HOSTS`; use a production WSGI server and serve collected static files through the host. Do not use Django's development server for production.
+Live portfolio: https://tasmimdristy7.github.io/CSCI713_Portfolio/
+
+GitHub Pages serves the static export in `docs/` (main branch). Python/Django remains the source; Pages does not run the Python server. All current portfolio features and animations work in this static export.
+
+After changing the template or assets, update the published version with:
+
+```sh
+python manage.py export_pages
+git add docs
+git commit -m "Update GitHub Pages export"
+git push
+```
+
+For a live Django server instead, use a Python-capable host, set `DJANGO_DEBUG=false`, a private `DJANGO_SECRET_KEY`, and comma-separated `DJANGO_ALLOWED_HOSTS`, then serve the WSGI app and collected static files.
 
 This repository conversion does not implement the assignment's separate toy project or Kanban board.
