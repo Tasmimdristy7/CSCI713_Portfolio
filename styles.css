@@ -25,21 +25,26 @@
 @media(prefers-reduced-motion:reduce){.scene-frame:after{display:none}.arriving{transform:none}}
 html.paused .arriving{animation:none}
 
-/* Each tiny builder carries its letter into place, then drops away. */
-.name-stage{padding-top:8px;margin-bottom:18px}
-.assembled-name{font-family:var(--mono);font-size:clamp(40px,4.5vw,64px);font-weight:700;letter-spacing:-3px;line-height:1.45;margin:0}
-.name-word{display:block;white-space:nowrap}
-.letter-slot{display:inline-block;position:relative}
-.name-letter{display:inline-block}
-.letter-builder{position:absolute;width:32px;height:38px;left:50%;top:calc(100% - 8px);opacity:0;pointer-events:none}
-.assembling .name-letter{animation:place-letter 2.4s cubic-bezier(.22,.7,.25,1) both;animation-delay:var(--delay)}
-.assembling .letter-builder{animation:builder-delivery 2.4s ease-in-out both;animation-delay:var(--delay)}
-.rebuild-name{display:block;margin-top:32px;border:0;border-bottom:1px dashed #666;background:transparent;padding:4px 0;color:#aaa;font:10px var(--mono)}
+/* Two robots push complete names from opposite sides. */
+.name-stage{padding:8px 0 0;margin-bottom:18px;overflow:hidden}
+.assembled-name{font-family:var(--mono);font-size:clamp(36px,3.8vw,54px);font-weight:700;letter-spacing:-2px;line-height:1.65;margin:0}
+.name-word{display:block;position:relative;white-space:nowrap;width:max-content;margin-left:48px}
+.pushed-word{display:inline-block}
+.name-pusher{position:absolute;width:40px;height:44px;left:-43px;bottom:14px;overflow:visible}
+.last-name .name-pusher{left:auto;right:-43px;transform:scaleX(-1)}
+.assembling .first-name{animation:push-first 5s ease-in-out both}
+.assembling .last-name{animation:push-last 5s .6s ease-in-out both}
+.assembling .pusher-body{animation:push-effort .35s ease-in-out 14}
+.assembling .pusher-foot{animation:robot-step .35s steps(2,end) 14}
+.assembling .foot-two{animation-direction:reverse}
+.assembling .last-name .pusher-body,.assembling .last-name .pusher-foot{animation-delay:.6s}
+.rebuild-name{display:block;margin-top:18px;border:0;border-bottom:1px dashed #666;background:transparent;padding:4px 0;color:#aaa;font:10px var(--mono)}
 .rebuild-name:hover{color:white}
 .name-tagline{font-size:14px;color:#ddd;margin:20px 0 0}
-@keyframes place-letter{0%{opacity:0;transform:translate(-24px,28px) rotate(-12deg)}15%{opacity:1}58%{transform:translate(0,-6px) rotate(0)}72%{transform:translate(0,2px)}85%,100%{opacity:1;transform:translate(0,0)}}
-@keyframes builder-delivery{0%{opacity:0;transform:translate(calc(-50% - 24px),28px)}15%{opacity:1}58%{transform:translate(-50%,-6px)}72%{opacity:1;transform:translate(-50%,2px)}82%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(-50%,18px)}}
-html.paused .assembling .name-letter{animation:none}
-html.paused .letter-builder{visibility:hidden}
-@media(prefers-reduced-motion:reduce){.letter-builder{display:none}.rebuild-name{display:none}}
-@media(max-width:700px){.assembled-name{font-size:clamp(38px,11vw,54px)}}
+@keyframes push-first{0%,8%{transform:translateX(-115%)}80%{transform:translateX(5px)}90%,100%{transform:translateX(0)}}
+@keyframes push-last{0%,8%{transform:translateX(140%)}80%{transform:translateX(-5px)}90%,100%{transform:translateX(0)}}
+@keyframes push-effort{50%{transform:translate(1px,1px)}}
+@keyframes robot-step{50%{transform:translateX(3px)}}
+html.paused .name-word{animation:none;transform:none}
+@media(prefers-reduced-motion:reduce){.rebuild-name{display:none}}
+@media(max-width:700px){.assembled-name{font-size:clamp(30px,8.5vw,46px)}}
