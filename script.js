@@ -15,6 +15,8 @@ const greetings = ['robot.say("hello, human! welcome to my little universe.");',
 let greeting = 0;
 document.querySelector('#robot-hello').addEventListener('click', () => {
   document.querySelector('#terminal-message').textContent = greetings[greeting++ % greetings.length];
+  const robot = document.querySelector('.robot');
+  if (!paused) robot.classList.add('waving');
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
 const links = document.querySelectorAll('nav a');
@@ -28,3 +30,14 @@ const observer = new IntersectionObserver(entries => {
   }
 }, { rootMargin: '-10% 0px -55% 0px', threshold: 0 });
 document.querySelectorAll('main section[id]').forEach(section => observer.observe(section));
+
+// Animate each section once as it enters view; content is never hidden.
+const entranceObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    if (!paused) entry.target.classList.add('arriving');
+    entranceObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.section-top, .education-card, .job, .project-card, .contact').forEach(item => entranceObserver.observe(item));
+document.querySelector('.robot-arm').addEventListener('animationend', () => document.querySelector('.robot').classList.remove('waving'));
