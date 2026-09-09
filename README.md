@@ -54,4 +54,4 @@ git push
 
 For a live Django server instead, use a Python-capable host, set `DJANGO_DEBUG=false`, a private `DJANGO_SECRET_KEY`, and comma-separated `DJANGO_ALLOWED_HOSTS`, then serve the WSGI app and collected static files.
 
-This repository conversion does not implement the assignment's separate toy project or Kanban board.
+The Projects section includes [Robot Care Buddy](https://github.com/Tasmimdristy7/Robot_Care_Buddy), the separate Django toy project for Assignment 1. Its repository documents the open-source reference, AI tool, features, tests, and future development issues.
